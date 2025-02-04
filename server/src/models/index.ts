@@ -1,8 +1,13 @@
 import sequelize from '../config/connection.js';
-import { VolunteerFactory } from './volunteer.js';
-import { WorkFactory } from './work.js';
+import { RsvpFactory} from './rsvp.js';
+import { UserFactory } from './user.js';
+import { EventFactory } from './event.js';
 
 
-// TODO: Create a One-to-Many relationship (Volunteer can have numerous volunteer works)
+const rsvp = RsvpFactory(sequelize);
 
-export { Volunteer, Work };
+const user = UserFactory(sequelize);
+
+const event = EventFactory(sequelize);
+
+export { rsvp, user,event, sequelize };

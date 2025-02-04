@@ -1,17 +1,22 @@
-import { seedVolunteers } from './volunteer-seeds.js';
-import { seedWork } from './work-seeds.js';
-import sequelize from '../config/connection.js' 
+import { seedRsvp } from './rsvp-seed.js';
+import { seedUsers } from './user-seed.js';
+import sequelize from '../config/connection.js'; 
+import { seedEvents } from './events-seed.js';
 
 const seedAll = async (): Promise<void> => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync();
     console.log('\n----- DATABASE SYNCED -----\n');
     
-    await seedVolunteers();
-    console.log('\n----- VOLUNTEERS SEEDED -----\n');
+    await seedRsvp();
+    console.log('\n----- RSVPs SEEDED -----\n');
     
-    await seedWork();
-    console.log('\n----- WORK SEEDED -----\n');
+    await seedEvents();
+    console.log('\n----- Events SEEDED -----\n');
+
+    await seedUsers();
+    console.log('\n----- Users SEEDED -----\n');
+    
     
     process.exit(0);
   } catch (error) {
