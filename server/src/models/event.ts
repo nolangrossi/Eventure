@@ -61,7 +61,7 @@ export function EventFactory(sequelize: Sequelize): typeof Event {
     {
       sequelize,
       // Manually define the table name
-      tableName: "rsvp",
+      tableName: "event",
       // Set to false to remove the `created_at` and `updated_at` columns
       timestamps: false,
       underscored: true,

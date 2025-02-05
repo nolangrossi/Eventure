@@ -1,3 +1,4 @@
+ 
 import {
   Model,
   type InferAttributes,
@@ -35,7 +36,7 @@ export function RsvpFactory(sequelize: Sequelize): typeof Rsvp {
       event_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'events', // the name of the table you are referencing
+          model: 'event', // the name of the table you are referencing
           key: 'event_id', // the primary key in the events table
         },
         allowNull: false, // ensure event_id can't be null

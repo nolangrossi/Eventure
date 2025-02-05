@@ -3,6 +3,8 @@
 import express from 'express';
 //import routes from './routes/index.js';
 import sequelize from './config/connection.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 

@@ -1,4 +1,5 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
+
 
 import {
   Model,
@@ -84,7 +85,7 @@ export function UserFactory(sequelize: Sequelize) {
       sequelize,
       timestamps: false,
       underscored: true,
-      modelName: 'user',
+      modelName: 'users',
     }
   );
 

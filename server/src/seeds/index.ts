@@ -1,9 +1,13 @@
+
 import { seedRsvp } from './rsvp-seed.js';
 import { seedUsers } from './user-seed.js';
-import sequelize from '../config/connection.js'; 
+import sequelize from '../config/connection.js';
 import { seedEvents } from './events-seed.js';
 
+
 const seedAll = async (): Promise<void> => {
+
+  console.log(process.env.DB_PASSWORD)
   try {
     await sequelize.sync();
     console.log('\n----- DATABASE SYNCED -----\n');
