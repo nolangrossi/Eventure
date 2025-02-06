@@ -9,25 +9,26 @@ import ErrorPage from './pages/ErrorPage.tsx';
 // import EditVolunteer from './pages/EditVolunteer.tsx';
 // import EditWork from './pages/EditWork.tsx';
 import LoginPage from './pages/LoginPage.tsx';
-// import SignUP from './pages/SignUPpage.tsx';
+import SignUPpage from './pages/SignUPpage.tsx';
+import App from './App.tsx';
 
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <LoginPage />,
+    element: <App />,
     errorElement: <ErrorPage />,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <Login />
-    //   }, 
-    //   {
-    //     path: '/signup',
-    //     element: <SignUP />
-    //   }
+    children: [
+      {
+        path: "/login",
+        element: <LoginPage />
+      }, 
+      {
+        path: '/signup',
+        element: <SignUPpage />
+      }
       
-    // ]
+    ]
   },
 ]);
 
