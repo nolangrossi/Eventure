@@ -1,0 +1,85 @@
+.signup-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("/src/assets/stage-background.jpg") no-repeat center
+    center/cover;
+  position: relative;
+}
+
+.signup-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Opacity effect */
+  /* z-index: 1; Ensure overlay is on top */
+}
+
+.signup-container {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15); /* Semi-transparent card */
+  padding: 2rem;
+  border-radius: 10px;
+  backdrop-filter: blur(10px); /* Glass effect */
+  text-align: center;
+  width: 360px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center input boxes */
+  width: 100%;
+}
+
+.signup-container h2 {
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.signup-container input {
+  width: 95%;
+  max-width: 360px;
+  padding: 10px;
+  margin: 10px auto;  /* Center the inputs */
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* Button styles */
+.signup-container button {
+  width: 45%;
+  padding: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Button hover effect */
+.signup-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styles */
+.error {
+  color: red;
+  font-size: 1.1rem;
+}

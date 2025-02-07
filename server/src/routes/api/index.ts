@@ -1,10 +1,9 @@
-// import { Router } from 'express';
-// import { volunteerRouter } from './volunteer-routes.js';
-// import { workRouter } from './work-volunteer.js';
+import { Router } from 'express';
+import { ticketmasterRouter } from './ticketmaster.js';
 
-// const router = Router();
 
-// router.use('/volunteers', volunteerRouter);
-// router.use('/works', workRouter);
+const router = Router();
 
-// export default router;
+router.use('/search', ticketmasterRouter);
+
+export default router;

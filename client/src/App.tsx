@@ -1,16 +1,14 @@
-import { Outlet } from "react-router-dom"
-
-import Navbar from "./components/Navbar"
+import { Navigate, Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <Navbar />
-        <main>
-          <Outlet />
-        </main>
-    </>
-  )
+    <div>
+      {/* Add Navbar here later if needed */}
+      <Outlet /> {/* This is where child pages (Login, Dashboard, etc.) will be displayed */}
+      <Navigate to= "/login" />
+    </div>
+  );
 }
 
-export default App
+
+export default App;
