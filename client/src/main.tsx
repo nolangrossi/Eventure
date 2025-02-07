@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
-
 import ErrorPage from './pages/ErrorPage.tsx';
 // import MainPage from './pages/MainPage.tsx';
 // import VolunteerPage from './pages/VolunteerPage.tsx';
@@ -38,3 +37,4 @@ if(rootElement) {
     <RouterProvider router={router} />
   );
 }
+App();

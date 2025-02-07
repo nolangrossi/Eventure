@@ -1,10 +1,10 @@
 import {
   Model,
-  type InferAttributes,
-  type InferCreationAttributes,
-  type CreationOptional,
+  InferAttributes,
+  InferCreationAttributes,
+  CreationOptional,
   DataTypes,
-  type Sequelize,
+  Sequelize,
 } from "sequelize";
 
 export class Event extends Model<
