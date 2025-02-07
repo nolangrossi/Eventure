@@ -1,13 +1,21 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc",
+    "build": "npx nodemon",
     "start": "npm run build && node dist/server.js",
-    "dev": ""
+    "dev": "nodemon server.js"  
+  
   },
+
+  "nodemonConfig": {
+    "watch": ["src"],
+    "ext": "ts,json,js",
+    "exec": "npx tsc && node dist/server.js"
+  },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -31,5 +39,6 @@
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.5"
-  }
+  
+}
 }
