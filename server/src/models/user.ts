@@ -1,6 +1,4 @@
 import bcrypt from 'bcryptjs';
-
-
 import {
   Model,
   type InferAttributes,
@@ -10,14 +8,21 @@ import {
   type Sequelize,
 } from 'sequelize';
 
+interface UserAttributes {
+  user_id: number;
+  username: string;
+  email: string;
+  password: string;
+}
+
 export class User extends Model<
   InferAttributes<User>,
   InferCreationAttributes<User>
-> {
-  declare user_id: CreationOptional<number>;
-  declare username: string;
-  declare email: string;
-  declare password: string;
+>implements UserAttributes {
+  public user_id: CreationOptional<number>;
+  public username: string;
+  public email: string;
+  public password: string;
 
   // Instance method to compare the entered password with the stored hash
   public async comparePassword(password: string): Promise<boolean> {
