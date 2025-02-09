@@ -6,12 +6,23 @@ const router = express.Router();
 dotenv.config();
 
 router.get('/ticketmaster', async (req: Request, res: Response) => {
-  console.log('ticketmaster route');
+  console.log('Ticketmaster route accessed');
+
+  // Extract query parameters from the request
   const { keyword, location } = req.query;
   console.log("Keyword:", keyword, "Location:", location);
   console.log("API Key:", process.env.API_KEY);
 
-  const url = `https://app.ticketmaster.com/discovery/v2/events.json?&page=0&city=detroit&apikey=${process.env.API_KEY}`;
+  // Construct the API URL dynamically
+  const params = new URLSearchParams({
+    apikey: process.env.API_KEY || "",
+    page: "0", // Default page
+  });
+
+  if (keyword) params.append("keyword", keyword as string);
+  if (location) params.append("city", location as string); // Use city filter dynamically
+
+  const url = `https://app.ticketmaster.com/discovery/v2/events.json?${params.toString()}`;
   console.log("Constructed URL:", url);
 
   try {
