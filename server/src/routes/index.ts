@@ -1,7 +1,11 @@
 import { Router } from 'express';
-import apiRoutes from './api/index.js';
+import  { apiRouter } from './api/index.js';
 const router = Router();
 
-router.use('/api', apiRoutes);
+router.use('/', apiRouter);
 
-export default router;
+router.get('/', (_req, _res) => {
+    console.log('index route');
+});
+
+export {router as indexRouter};

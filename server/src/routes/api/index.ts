@@ -6,4 +6,4 @@ const router = Router();
 
 router.use('/search', ticketmasterRouter);
 
-export default router;
+export {router as apiRouter};
