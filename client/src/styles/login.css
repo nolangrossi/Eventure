@@ -1,113 +1,123 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
 .login-page {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url("/src/assets/stage-background.jpg") no-repeat center center/cover;
-    position: relative;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("/src/assets/stage-background.jpg") no-repeat center
+    center/cover;
 }
 
 .login-page::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for opacity */
-  }
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for opacity */
+}
 
-  .login-container {
-    position: relative;
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.15); /* Semi-transparent card */
-    padding: 4rem;
-    border-radius: 10px;
-    backdrop-filter: blur(10px); /* Glass effect */
-    text-align: center;
-    width: 350px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  }
+.login-container {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15); /* Semi-transparent card */
+  padding: 4rem;
+  border-radius: 10px;
+  backdrop-filter: blur(10px); /* Glass effect */
+  text-align: center;
+  width: 350px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-  .login-container h2 {
-    margin-bottom: 1rem;
-    color: #fff;
-    font-size: 2rem;
-  }
-  
-  .login-container input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.8);
-  }
+.login-container h2 {
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 2rem;
+}
 
-  .login-container button {
-    width: 15%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-   
-  }
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+}
 
-  .login-container button:hover {
-    background-color: #0056b3;
-  }
-  
-  .error {
-    color: red;
-    font-size: 1.2rem;
-  }
+.login-container button {
+  width: 15%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
 
-  .login-container form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.login-container button:hover {
+  background-color: #0056b3;
+}
 
-  .button-group {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
+.error {
+  color: red;
+  font-size: 1.2rem;
+}
 
-  .button-group button {
-    min-width: 145px;
-    height:35px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-align: center;
-    white-space:nowrap;
-  }
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .create-account-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 2rem;
-   
-  }
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 10px;
+}
 
-  .create-account-btn:hover {
-    background-color: #0056b3;
-  }
+.button-group button {
+  min-width: 145px;
+  height: 35px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  white-space: nowrap;
+}
 
-  /* input {
+.create-account-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.create-account-btn:hover {
+  background-color: #0056b3;
+}
+
+/* input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
