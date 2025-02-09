@@ -22,7 +22,7 @@ const LoginPage = () => {
     // TODO: Replace with API call to backend authentication
     if (userName === "testuser" && password === "password123") {
       localStorage.setItem("token", "mock-jwt-token"); // Temporary mock authentication
-      navigate("/dashboard"); // Redirect after login
+      navigate("/explore"); // Redirects to "Explore page after login
     } else {
       setError("Invalid credentials. Please try again.");
     }
