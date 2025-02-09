@@ -1,40 +1,49 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './index.css'
+// import './index.css'
 
 import ErrorPage from './pages/ErrorPage.tsx';
-// import MainPage from './pages/MainPage.tsx';
-// import VolunteerPage from './pages/VolunteerPage.tsx';
-// import VolunteerForm from './pages/VolunteerForm.tsx';
-// import EditVolunteer from './pages/EditVolunteer.tsx';
-// import EditWork from './pages/EditWork.tsx';
 import LoginPage from './pages/LoginPage.tsx';
 import SignUPpage from './pages/SignUPpage.tsx';
-import App from './App.tsx';
+import EventsPage from './pages/ExplorePage.tsx';
+import RSVPPage from './pages/RSVPPage.tsx';
+import { EventsProvider } from "./interfaces/EventsData";
+import Layout from "./components/Layout";
+// import App from './App.tsx';
 
 
 const router = createBrowserRouter([
+
   {
-    path: '/',
-    element: <App />,
+    path: "/",
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: "/login",
-        element: <LoginPage />
-      }, 
+        element: <LoginPage />,
+      },
       {
-        path: '/signup',
-        element: <SignUPpage />
-      }
-      
-    ]
+        path: "/signup",
+        element: <SignUPpage />,
+      },
+      {
+        path: "/events",
+        element: <EventsPage />,
+      },
+      {
+        path: "/rsvp",
+        element: <RSVPPage />,
+      },
+    ],
   },
 ]);
 
 const rootElement = document.getElementById('root');
 if(rootElement) {
   ReactDOM.createRoot(rootElement).render(
-    <RouterProvider router={router} />
+    <EventsProvider>
+      <RouterProvider router={router} />
+    </EventsProvider>
   );
 }
