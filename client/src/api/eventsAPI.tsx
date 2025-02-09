@@ -5,12 +5,14 @@ export { fetchEvents, saveEvent, removeEvent };
 
 const API_BASE_URL = "http://localhost:3000/"; // Adjust the port if needed
 
-// Fetch all events
+// Fetch all events from the back-end (server)
 const fetchEvents = async (): Promise<Event[]> => {
   try {
     const response = await fetch(`${API_BASE_URL}/events`);
     if (!response.ok) throw new Error("Failed to fetch events");
-    return await response.json();
+   
+    const data: Event[] = await response.json();
+    return data;
   } catch (error) {
     console.error("Error fetching events:", error);
     return [];
