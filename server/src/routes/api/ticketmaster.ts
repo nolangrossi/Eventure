@@ -5,40 +5,28 @@ import type { Request, Response } from 'express';
 const router = express.Router();
 dotenv.config();
 
-router.get('/keyword', async (req: Request, _res: Response) => {
-    const { keyword } = req.body
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&apikey=${process.env.API_KEY}`;
-    try {
-        const  response = await fetch(url);
-        if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-        }
-    
-        const json = await response.json();
-        console.log(json);
-    } catch (error) {
-        console.error(error);
-    }
-});
-router.get('/city', async (req: Request, _res: Response) => {
-  const { city } = req.body
-  const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&apikey=${process.env.API_KEY}`;
+router.get('/ticketmaster', async (req: Request, res: Response) => {
+  console.log('ticketmaster route');
+  const { keyword, location } = req.query;
+  console.log("Keyword:", keyword, "Location:", location);
+  console.log("API Key:", process.env.API_KEY);
+
+  const url = `https://app.ticketmaster.com/discovery/v2/events.json?&page=0&city=detroit&apikey=${process.env.API_KEY}`;
+  console.log("Constructed URL:", url);
+
   try {
-      const  response = await fetch(url);
-      if (!response.ok) {
+    const response = await fetch(url);
+    if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
-      }
-  
-      const json = await response.json();
-      console.log(json);
+    }
+
+    const json = await response.json();
+    console.log("Response JSON:", json);
+    res.send(json);
   } catch (error) {
-      console.error(error);
+    console.error("Error fetching events:", error);
+    res.status(500).json({ error: 'Failed to fetch events' });
   }
 });
-// _embedded.events[n].name
-// _embedded.events[n].url
-// _embedded.events[n].images[0].url
-// _embedded.events[n].dates.start.localDate
-// _embedded.events[n].priceRanges.min
-// _embedded.events[n].priceRanges.max
+
 export { router as ticketmasterRouter };
