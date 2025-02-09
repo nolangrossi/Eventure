@@ -25,8 +25,7 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUPpage />
-      }
-      
+      }, 
     ]
   },
 ]);
@@ -37,4 +36,3 @@ if(rootElement) {
     <RouterProvider router={router} />
   );
 }
-App();
