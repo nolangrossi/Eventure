@@ -34,19 +34,21 @@ const LoginPage = () => {
     }
   };
 
-    const NylasLogin = async () => {
-      try {
-        const response = await fetch("http://localhost:3001/nylas/auth");
-        const data = await response.json();
-        if (data.authUrl) {
-          console.log(data.authUrl);
-          window.location.href = data.authUrl; // Redirect user to Nylas authentication
-        }
-      } catch (error) {
-        console.error("Error fetching Nylas auth URL:", error);
+  const NylasLogin = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/nylas/auth");
+      const data = await response.json();
+
+      if (data.authUrl) {
+        window.location.href = data.authUrl;
+      } else {
+        setError("Failed to retrieve authentication URL. Please try again.");
       }
-    };
-  
+    } catch (error) {
+      console.error("Error fetching Nylas auth URL:", error);
+      setError("An error occurred while connecting to Nylas. Please try again.");
+    }
+  };
 
 
   // const handleNylasAuth = async () => {
