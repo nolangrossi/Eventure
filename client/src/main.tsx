@@ -5,10 +5,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorPage from './pages/ErrorPage.tsx';
 import LoginPage from './pages/LoginPage.tsx';
 import SignUPpage from './pages/SignUPpage.tsx';
-import EventsPage from './pages/ExplorePage.tsx';
+import ExplorePage from './pages/ExplorePage.tsx';
 import RSVPPage from './pages/RSVPPage.tsx';
 import { EventsProvider } from "./interfaces/EventsData";
 import Layout from "./components/Layout";
+import HomePage from './pages/HomePage.tsx';
 // import App from './App.tsx';
 
 
@@ -16,8 +17,13 @@ const router = createBrowserRouter([
 
   {
     path: "/",
-    element: <Layout />,
+    element: <HomePage />,
     errorElement: <ErrorPage />,
+  },
+
+  {
+    path: "/",
+    element: <Layout />,
     children: [
       {
         path: "/login",
@@ -28,8 +34,8 @@ const router = createBrowserRouter([
         element: <SignUPpage />,
       },
       {
-        path: "/events",
-        element: <EventsPage />,
+        path: "/explore",
+        element: <ExplorePage />,
       },
       {
         path: "/rsvp",
