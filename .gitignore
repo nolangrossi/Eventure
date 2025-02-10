@@ -1,2 +1,23 @@
-node_modules
+# Ignore node_modules for both client & server
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Ignore credentials
 credentials.json
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files
+.env
+client/.env
+server/.env
+
+# Ignore build and dependency files
+dist/
+build/
+package-lock.json
+yarn.lock
+
