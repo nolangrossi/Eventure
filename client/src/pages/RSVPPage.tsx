@@ -11,7 +11,7 @@ const RSVPPage = () => {
       <h2>My RSVP Events</h2>
       {savedEvents.length === 0 ? (
         <p>There Are No Saved Events.
-            <button className="browse-events-btn" onClick={() => navigate("/events")}>Browse Events</button>
+            <button className="browse-events-btn" onClick={() => navigate("/explore")}>Browse Events</button>
         </p>
       ) : (
         <div className="events-list">
@@ -27,7 +27,7 @@ const RSVPPage = () => {
               <button className="remove-btn" onClick={() => removeEvent(event.id)}>Remove</button>
             </div>
           ))}
-          <button className="browse-events-btn" onClick={() => navigate("/events")}>Browse Events</button>
+          <button className="browse-events-btn" onClick={() => navigate("/explore")}>Browse Events</button>
         </div>
         
       )}
