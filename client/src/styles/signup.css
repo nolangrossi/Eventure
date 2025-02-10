@@ -1,13 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .signup-page {
   height: 100vh;
   width: 100vw;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: url("/src/assets/stage-background.jpg") no-repeat center
-    center/cover;
-  position: relative;
+  align-items: center;
+  text-align: center;
+  background: url("https://cdn.pixabay.com/photo/2018/05/10/11/34/concert-3387324_1280.jpg") no-repeat center center/cover;
+  position: fixed; /* Ensures it stays centered even if there's extra content */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
+
 
 .signup-page::before {
   content: "";
@@ -16,70 +26,108 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Opacity effect */
-  /* z-index: 1; Ensure overlay is on top */
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .signup-container {
   position: relative;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.15); /* Semi-transparent card */
+  background: rgba(255, 255, 255, 0.2);
   padding: 2rem;
-  border-radius: 10px;
-  backdrop-filter: blur(10px); /* Glass effect */
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
   text-align: center;
-  width: 360px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* This keeps all elements inside centered */
+  max-width: 400px;
+  width: 90%; /* Responsive */
+}
 
+.signup-container:hover {
+  transform: scale(1.03);
+}
+
+.signup-container h2 {
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
 }
 
 .signup-container form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center input boxes */
   width: 100%;
+  gap: 16px;
 }
 
-.signup-container h2 {
-  margin-bottom: 0.5rem;
-  color: #fff;
-  font-size: 2rem;
-}
-
-.signup-container input {
-  width: 95%;
-  max-width: 360px;
-  padding: 10px;
-  margin: 10px auto;  /* Center the inputs */
+.input-field {
+  width: 100%;
+  padding: 14px;
   border: none;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.8);
-  text-align: left;
-  box-sizing: border-box;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  color: black; /* Text color set to black */
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-/* Button styles */
-.signup-container button {
-  width: 45%;
-  padding: 8px;
-  background-color: #007bff;
+.input-field:focus {
+  outline: 2px solid #007bff;
+  background: white;
+  transform: scale(1.02);
+}
+
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: block; /* Prevents inline positioning issues */
+  margin: 0 auto; /* Centers it horizontally */
+  text-align: center;
 }
 
-/* Button hover effect */
-.signup-container button:hover {
-  background-color: #0056b3;
+.submit-btn:hover {
+  background: #0056b3;
+  transform: scale(1.05);
 }
 
-/* Error message styles */
 .error {
   color: red;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Ensure text alignment */
+}
+
