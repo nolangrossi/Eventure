@@ -11,7 +11,6 @@ router.get('/ticketmaster', async (req: Request, res: Response) => {
   // Extract query parameters from the request
   const { keyword, city } = req.query;
   console.log("Keyword:", keyword, "Location:", city);
-  console.log("API Key:", process.env.API_KEY);
 
   // Construct the API URL dynamically
   const params = new URLSearchParams({
@@ -24,7 +23,6 @@ router.get('/ticketmaster', async (req: Request, res: Response) => {
   if (city) params.append("city", city as string); // Use city filter dynamically
 
   const url = `https://app.ticketmaster.com/discovery/v2/events.json?${params.toString()}`;
-  console.log("Constructed URL:", url);
 
   try {
     const response = await fetch(url);
@@ -33,8 +31,8 @@ router.get('/ticketmaster', async (req: Request, res: Response) => {
     }
 
     const json = await response.json();
-    console.log("Response JSON:", json);
     res.json(json); // Ensure the response is sent as JSON
+    console.log("Data Sent!");
   } catch (error) {
     console.error("Error fetching events:", error);
     res.status(500).json({ error: 'Failed to fetch events' });
