@@ -31,7 +31,7 @@
   ## Usage 
   Here is an example screenshot and video of the Eventure App:
 
-  ![Eventure-App](./client/src/assets/kanban-board-app.jpg)
+  ![Eventure-App](./client/src/assets/homepage-render.jpg)
   
   ## Contributing
   The source of contributors I have used in this application:
@@ -69,6 +69,5 @@
   This project is Licensed under the MIT License.
   
   ## Questions
-  Feel Free to contact me for any additional questions
-  * GitHub: [jbarry89](https://github.com/jbarry89/)
-  * Email: myEmail@gmail.com 
+  Feel Free to contact any of the [contributors](#contributing) listed above for any additional questions.
+ 
