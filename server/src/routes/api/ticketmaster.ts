@@ -9,18 +9,17 @@ router.get('/ticketmaster', async (req: Request, res: Response) => {
   console.log('Ticketmaster route accessed');
 
   // Extract query parameters from the request
-  const { keyword, city } = req.query;
+  const { keyword, city, page } = req.query;
   console.log("Keyword:", keyword, "Location:", city);
 
   // Construct the API URL dynamically
   const params = new URLSearchParams({
     apikey: process.env.API_KEY || "",
-
-    page: "0", // Default page
   });
 
   if (keyword) params.append("keyword", keyword as string);
   if (city) params.append("city", city as string); // Use city filter dynamically
+  if (page) params.append('page', page as string);
 
   const url = `https://app.ticketmaster.com/discovery/v2/events.json?${params.toString()}`;
 
