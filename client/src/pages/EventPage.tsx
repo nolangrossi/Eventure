@@ -15,7 +15,9 @@ const EventsPage = () => {
       const queryParams = new URLSearchParams();
       if (searchTerm) queryParams.append("keyword", searchTerm);
       if (location) queryParams.append("city", location);
-
+      
+      console.log("Query Params:", queryParams.toString());
+      
       const url = `api/search/ticketmaster?${queryParams.toString()}`;
       console.log("Fetching URL:", url); // Debugging output
 
@@ -72,7 +74,7 @@ const EventsPage = () => {
               <p>Date: {event.dates?.start?.localDate || "TBA"}</p>
               <p>Price: {event.priceRanges ? `$${event.priceRanges[0].min} - $${event.priceRanges[0].max}` : "N/A"}</p>
               <p>Location: {event._embedded?.venues[0]?.address?.line1 || "Unknown Address"}</p>
-              <a href={event.url} target="_blank" rel="noopener noreferrer">
+              <a href={event.products} target="_blank" rel="noopener noreferrer" style={{color: "darkblue"}}>
                 View Event
               </a>
             </li>
