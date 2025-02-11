@@ -34,7 +34,7 @@
   ![Eventure-App](./client/src/assets/homepage-render.jpg)
   
   ## Contributing
-  The source of contributors I have used in this application:
+  These are all the contributors who helped bring this application to life:
   * [nolangrossi](https://github.com/nolangrossi/)
   * [jutalexa2024](https://github.com/jutalexa2024)
   * [Jesuscatalan](https://github.com/Jesuscatalan)
