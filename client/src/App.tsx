@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
-
+import  Navbar from "./pages/Nav.js";
 function App() {
   return (
     <div>
-      {/* Add Navbar here later if needed */}
+      <Navbar />
       <Outlet /> {/* This is where child pages (Login, Dashboard, etc.) will be displayed */}
-      <Navigate to= "/login" />
+      <Navigate to= "/events" />
     </div>
   );
 }
