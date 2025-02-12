@@ -1,14 +1,16 @@
 .home-page {
   height: 100vh;
   width: 100vw;
-  background: url("/src/assets/homepage-stage-background.jpg") no-repeat center
-    center/cover;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
 }
+
 
 /* Dark overlay for better text visibility */
 .overlay {
@@ -27,19 +29,18 @@
 
 /* Heading styles */
 .overlay h1 {
-  font-size: 4rem;
+  font-size: 5rem;
   margin-bottom: 1px;
 
   /* Glow effect */
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
-               0 0 20px rgba(255, 255, 255, 0.6), 
-               0 0 10px rgba(24, 114, 211, 0.8); /* Adjust glow intensity */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6), 0 0 10px rgba(24, 114, 211, 0.8); /* Adjust glow intensity */
   animation: glow 1.2s infinite alternate;
 }
 
 /* Subheading styles */
 .overlay p {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-style: italic;
   margin-bottom: 3rem;
 }
@@ -48,29 +49,16 @@
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 40px; /* Adds spacing between buttons */
 }
 
 /* General button styles */
 .button-group button {
-  padding: 5px 20px;
-  font-size: 1.2rem;
+  padding: 5px 30px;
+  font-size: 1.5rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
-}
-
-/* Explore button styling */
-.explore-btn {
-  background-color: #ffffff;
-  color: #0056b3;
-  font-size: 1rem;
-}
-
-.explore-btn:hover {
-  background-color: #0056b3;
-  color: #ffffff;
 }
 
 /* Login button styling */
@@ -83,4 +71,5 @@
 .login-btn:hover {
   background-color: #ffffff;
   color: #0056b3;
+  transform: scale(1.1);
 }
