@@ -19,10 +19,12 @@ export class User extends Model<
   InferAttributes<User>,
   InferCreationAttributes<User>
 >implements UserAttributes {
-  public user_id: CreationOptional<number>;
-  public username: string;
-  public email: string;
-  public password: string;
+  declare user_id: CreationOptional<number>;
+  declare username: string;
+  declare firstname: string;
+  declare lastname: string;
+  declare email: string;
+  declare password: string;
 
   // Instance method to compare the entered password with the stored hash
   public async comparePassword(password: string): Promise<boolean> {
@@ -43,6 +45,7 @@ export class User extends Model<
   }
 }
 
+
 export function UserFactory(sequelize: Sequelize) {
   User.init(
     {
@@ -50,6 +53,14 @@ export function UserFactory(sequelize: Sequelize) {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+      },
+      firstname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      lastname: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       username: {
         type: DataTypes.STRING,

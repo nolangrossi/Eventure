@@ -1,38 +1,39 @@
-import dotenv from 'dotenv';
-dotenv.config();
-import { apiRouter } from './routes/api/index.js';
-import express from 'express';
+
+// TODO: Create Sequelize connector from models folder and import in to connect to postgres server.
+
+import sequelize from "./config/connection.js";
+import express from "express";
+import router from "./routes/api/index.js";
+import dotenv from "dotenv";
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const app = express();
-const PORT = process.env.PORT || 3001;
 
-// Get the directory name of the current module
+const app = express();
+dotenv.config();
+
+// Middleware (remove bodyParser.json())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const clientBuildPath = path.resolve(__dirname, '../../client/dist');
 
-// Serve static files from the React app
-app.use(express.static(clientBuildPath));
-app.use(express.json());
-app.use('/api', apiRouter);
+const PORT = process.env.PORT || 3001;
 
-// Catch-all route to serve index.html for any requests that don't match a static file
+app.use(express.static('../client/dist'));
+
+
+app.use("/api",router);  // Attach all routes correctly
 app.get('*', (_req, res) => {
   res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
-app.use((err, _req, res, _next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
+// Connect to the database before starting the server
+sequelize.sync().then(() => {
+  console.log(`Connected to database successfully.`);
+  app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+  });
 });
-
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
-
-
-
-
 

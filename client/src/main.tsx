@@ -12,7 +12,6 @@ import SignUPpage from './pages/SignUPpage.tsx';
 import EventsPage from './pages/EventPage.tsx';
 import App from './App.tsx';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -28,11 +27,11 @@ const router = createBrowserRouter([
         element: <SignUPpage />
       },
       {
+
         path : '/events',
         element: <EventsPage />
 
       }
-      
     ]
   },
 ]);

@@ -1,0 +1,218 @@
+// const clientID = process.env.UBER_CLIENT_ID;
+// const client_secret = process.env.CLIENT_SECRET;
+// Scopes sent from frontend
+// const redirect_uri= 'http://localhost:3001/rsvp';
+
+//const app = express();
+// import dotenv from 'dotenv';
+// import express from 'express';
+
+// Nylas.config({
+//   clientId: process.env.NYLAS_CLIENT_ID,
+//   clientSecret: process.env.NYLAS_API_KEY,
+//   apiServer: process.env.NYLAS_API_URI,
+// });
+
+// app.get("/oauth/authorize", (_req, res) => {
+//   const authUrl = Nylas.urlForAuthentication({
+//     redirectURI: process.env.NYLAS_CALLBACK_URI!, // Required
+//     loginHint: "", // Optional, pre-fills the email field
+//     provider: "google", // Adjust based on your email provider (e.g., "microsoft", "imap")
+//   });
+
+//   res.json({ authUrl });
+// });
+
+// Backend: Generate authorization URL
+// app.get("/uber/authorize", (_req, res) => {
+//   const scopes ="rides.request history profile";
+//   // Construct the Uber OAuth URL
+//   const authUrl = `https://auth.uber.com/oauth/v2/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(redirect_uri)}&scope=${encodeURIComponent(scopes)}&response_type=code`;
+
+//   // Send the URL to the frontend to redirect the user
+//   res.send(authUrl); // Response is just the auth URL to be redirected
+// });
+// app.get("/uber/authorize", async (_req, res) => {
+//   try {
+//     // const scopes = "profile request";  // Space-separated scopes
+//     const redirect_uri = "http://localhost:3001/rsvp"; // Your registered redirect URI
+
+//     // Construct the Uber OAuth URL
+//     const authUrl = `https://auth.uber.com/oauth/v2/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(
+//       redirect_uri
+//     )}&response_type=code`;
+
+//     // Log the generated URL (for debugging purposes)
+//     console.log("Generated Uber Auth URL:", authUrl);
+
+    // const uberResponse = await fetch(authUrl);
+
+    // const data = await uberResponse.json()
+
+    // console.log(data)
+
+    // Send the URL to the frontend to redirect the user
+//     res.send(authUrl); // The frontend will receive the authorization URL and redirect the user
+//   } catch (err) {
+//     console.log(err);
+//     res.send("Error");
+//   }
+// });
+
+// app.get("/rsvp", async (req: Request, res: Response): Promise<any> => {
+//   console.log(req.query);
+//   console.log(req.body);
+//   console.log(req.params);
+//   const code = req.query.code as string | undefined;
+//   if (!code) {
+//     return res.status(400).json({ error: "No authorization code provided" });
+//   }
+
+//   // Ensure that `code` is not an array and is a valid string
+//   if (Array.isArray(code)) {
+//     return res
+//       .status(400)
+//       .json({ error: "Authorization code should be a string, not an array" });
+//   }
+
+//   try {
+//     // Exchange the code for an access token
+//     const tokenUrl = "https://auth.uber.com/oauth/v2/token";
+//     const params = new URLSearchParams({
+//       client_id: clientID,
+//       client_secret: client_secret,
+//       grant_type: "authorization_code",
+//       redirect_uri: "http://localhost:3001/rsvp",
+//       code: code, // `code` is now guaranteed to be a string
+//     });
+
+//     const response = await fetch(tokenUrl, {
+//       method: "POST",
+//       body: params,
+//     });
+
+//     if (!response.ok) {
+//       // Handle errors from the Uber API
+//       const errorData = await response.json();
+//       return res.status(response.status).json({ error: errorData });
+//     }
+
+//     const data = await response.json();
+//     // You now have access to the access_token
+//     res.json(data);
+//   } catch (error) {
+//     console.error("Error getting access token:", error);
+//     res.status(500).json({ error: "Error during authentication" });
+//   }
+// });
+
+// // tax fares api
+// app.get(
+//   "/taxi/:dep_lat/:dep_lng/:arr_lat/:arr_lng",
+//   async (req: Request, res: Response): Promise<any> => {
+
+//     const {dep_lat, dep_lng, arr_lat, arr_lng} = req.params;
+
+//     const url =
+//       `https://taxi-fare-calculator.p.rapidapi.com/search-geo?dep_lat=${dep_lat}&dep_lng=${dep_lng}&arr_lat=${arr_lat}&arr_lng=${arr_lng}`;
+//     const options = {
+//       method: "GET",
+//       headers: {
+//         "x-rapidapi-key": "fd774774b2msh5d854c8ceea07a4p17463ajsnf4f08f2e2c04",
+//         "x-rapidapi-host": "taxi-fare-calculator.p.rapidapi.com",
+//       },
+//     };
+
+//     const response = await fetch(url, options);
+//     const data = await response.json();
+
+
+//     res.json(data)
+//   }
+// );
+
+// // Backend: Refresh access token
+// const refreshAccessToken = async (refreshToken) => {
+//   const params = new URLSearchParams({
+//     client_id: clientID,
+//     client_secret: client_secret,
+//     grant_type: 'refresh_token',
+//     refresh_token: refreshToken
+//   });
+
+//   const response = await fetch('https://auth.uber.com/oauth/v2/token', {
+//     method: 'POST',
+//     body: params
+//   });
+//   const data = await response.json();
+//   return data.access_token;
+// };
+
+// Backend: Use the access token to make a request to Uber API
+// app.get("/uber/products", (_req, res) => {
+//   const accessToken = "<ACCESS_TOKEN>"; // The token you received
+
+//   fetch(
+//     "https://api.uber.com/v1.2/products?latitude=37.7759792&longitude=-122.41823",
+//     {
+//       headers: {
+//         Authorization: `Bearer ${accessToken}`,
+//       },
+//     }
+//   )
+//     .then((response) => response.json())
+//     .then((data) => {
+//       res.json(data);
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching Uber products:", error);
+//       res.status(500).send("Error fetching Uber products");
+//     });
+// });
+
+
+
+
+
+import { useState } from "react";
+
+// Example of a React component for scope selection
+const ScopeSelection = ({ onSelectScopes }) => {
+    const [selectedScopes, setSelectedScopes] = useState([]);
+  
+    const handleChange = (scope) => {
+      setSelectedScopes(prev => 
+        prev.includes(scope) 
+          ? prev.filter(item => item !== scope) 
+          : [...prev, scope]
+      );
+    };
+  
+    const handleSubmit = () => {
+      onSelectScopes(selectedScopes.join(' '));
+    };
+  
+    return (
+      <div>
+        <label>
+          <input 
+            type="checkbox" 
+            value="profile" 
+            onChange={() => handleChange('profile')} 
+          />
+          Profile
+        </label>
+        <label>
+          <input 
+            type="checkbox" 
+            value="history" 
+            onChange={() => handleChange('history')} 
+          />
+          History
+        </label>
+        <button onClick={handleSubmit}>Continue</button>
+      </div>
+    );
+  };
+
+  export default ScopeSelection;
