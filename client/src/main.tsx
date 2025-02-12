@@ -9,10 +9,8 @@ import './index.css'
 // import EditWork from './pages/EditWork.tsx';
 import LoginPage from './pages/LoginPage.tsx';
 import SignUPpage from './pages/SignUPpage.tsx';
-//import EventsPage from './pages/EventPage.tsx';
+import EventsPage from './pages/EventPage.tsx';
 import App from './App.tsx';
-import Layout from './pages/Layout.tsx';
-
 
 const router = createBrowserRouter([
   {
@@ -29,8 +27,10 @@ const router = createBrowserRouter([
         element: <SignUPpage />
       },
       {
-      path:'/layout',
-      element:<Layout /> 
+
+        path : '/events',
+        element: <EventsPage />
+
       }
     ]
   },
