@@ -21,6 +21,8 @@ export class User extends Model<
 >implements UserAttributes {
   public user_id: CreationOptional<number>;
   public username: string;
+  public firstname: string;
+  public lastname: string;
   public email: string;
   public password: string;
 
@@ -43,6 +45,7 @@ export class User extends Model<
   }
 }
 
+
 export function UserFactory(sequelize: Sequelize) {
   User.init(
     {
@@ -50,6 +53,14 @@ export function UserFactory(sequelize: Sequelize) {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+      },
+      firstname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      lastname: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       username: {
         type: DataTypes.STRING,

@@ -6,16 +6,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx nodemon",
     "start": "npm run build && node dist/server.js",
-    "dev": "nodemon server.js"  
-  
+    "dev": "nodemon server.js"
   },
-
   "nodemonConfig": {
-    "watch": ["src"],
+    "watch": [
+      "src"
+    ],
     "ext": "ts,json,js",
     "exec": "npx tsc && node dist/server.js"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -36,10 +35,9 @@
     "express": "^4.21.2",
     "google-auth-library": "^9.15.1",
     "googleapis": "^105.0.0",
+    "nylas": "^6.0.0",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.5",
-    "nylas": "^6.0.0"
-  
-}
+    "sequelize": "^6.37.5"
+  }
 }

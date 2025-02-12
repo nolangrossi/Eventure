@@ -1,14 +1,14 @@
-
 import "../styles/login.css";
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+
 
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  //const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false); // Fix: Added useState for loading
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -34,62 +34,6 @@ const LoginPage = () => {
     }
   };
 
-  const NylasLogin = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/nylas/auth");
-      const data = await response.json();
-
-      if (data.authUrl) {
-        window.location.href = data.authUrl;
-      } else {
-        setError("Failed to retrieve authentication URL. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error fetching Nylas auth URL:", error);
-      setError("An error occurred while connecting to Nylas. Please try again.");
-    }
-  };
-
-
-  // const handleNylasAuth = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:3001/nylas/auth");
-  //     const data = await response.json();
-  //     if (data.authUrl) {
-  //       window.open(data.authUrl, "_blank"); // Redirect in the frontend
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to fetch Nylas auth URL", error);
-  //   }
-  // };
-
-  // const handleNylasLogin = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await fetch("http://localhost:3001/nylas/auth");
-      
-  //     if (!response.ok) {
-  //       const errorText = await response.text(); // Get response as text
-  //       console.error("Error response:", errorText);
-  //       throw new Error(`Failed to fetch Nylas auth URL: ${errorText}`);
-  //     }
-  
-  //     try {
-  //       const data = await response.json(); // Try parsing the JSON response
-  //       console.log(data);
-  //       window.location.href = data.authUrl; // Redirect to Nylas login
-  //     } catch (jsonError) {
-  //       console.error("Error parsing JSON:", jsonError);
-  //       setError("Unexpected response format from Nylas.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching Nylas auth URL", error);
-  //     setError("Failed to connect to Nylas. Please try again later.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-  
 
   return (
     <div className="login-page">
@@ -109,10 +53,11 @@ const LoginPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {/*Button-Container */}
+          {/* Button Group */}
           <div className="button-group">
-            <button type="submit" className="login-btn">
-              Login
+            <button type="submit" className="login-btn" /*disabled={loading}*/>
+            Login
+              {/* {loading ? "Logging in..." : "Login"} */}
             </button>
             <button
               type="button"
@@ -121,12 +66,13 @@ const LoginPage = () => {
             >
               Sign Up
             </button>
-            <button onClick={NylasLogin}>Login with Nylas</button>
-            </div>
+          </div>
         </form>
       </div>
     </div>
   );
 };
 
-  export default LoginPage;
+export default LoginPage;
+
+
