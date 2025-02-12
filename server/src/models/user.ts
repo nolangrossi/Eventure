@@ -19,12 +19,12 @@ export class User extends Model<
   InferAttributes<User>,
   InferCreationAttributes<User>
 >implements UserAttributes {
-  public user_id: CreationOptional<number>;
-  public username: string;
-  public firstname: string;
-  public lastname: string;
-  public email: string;
-  public password: string;
+  declare user_id: CreationOptional<number>;
+  declare username: string;
+  declare firstname: string;
+  declare lastname: string;
+  declare email: string;
+  declare password: string;
 
   // Instance method to compare the entered password with the stored hash
   public async comparePassword(password: string): Promise<boolean> {

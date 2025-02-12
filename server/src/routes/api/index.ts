@@ -4,7 +4,7 @@ import { SignUprouter } from './signupUser.js';
 
 const router = Router();
 
-router.use('/signup', SignUprouter);
+router.use(SignUprouter);
 
 router.use('/search', ticketmasterRouter);
 

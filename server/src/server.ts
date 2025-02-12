@@ -3,7 +3,7 @@
 import sequelize from "./config/connection.js";
 import dotenv from "dotenv";
 import express from "express";
-import { SignUprouter } from './routes/api/signupUser.js';
+import router from "./routes/api/index.js";
 
 const app = express();
 dotenv.config();
@@ -14,7 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 3001;
 
-app.use('/api', SignUprouter);  // Attach all routes correctly
+app.use(express.static('../client/dist'));
+
+
+app.use("/api",router);  // Attach all routes correctly
 
 // Connect to the database before starting the server
 sequelize.sync().then(() => {
