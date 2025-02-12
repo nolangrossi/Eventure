@@ -38,10 +38,17 @@ const EventsPage = () => {
     }
     setLoading(false);
   };
-  
-  const handleSelect = (option) => {
-    console.log('Selected option:', option);
+
+  const onSelection = (selectedOption, event) => {
+    console.log('Selected option:', selectedOption);
+    console.log('Event:', event);
   };
+
+  const handleSelect = (option, event) => {
+    console.log('Selected option:', option);
+    onSelection(option, event);
+  };
+
   useEffect(() => {
     fetchEvents(); // Fetch events on initial load
   }, [pagenumber]); // Add pagenumber as a dependency to refetch on page change
@@ -49,12 +56,12 @@ const EventsPage = () => {
   const incrementPage = () => {
     setPagenumber(pagenumber + 1); // Increment the page number
     console.log('current page:', pagenumber + 1);
-  }
+  };
 
   const decrementPage = () => {
     setPagenumber((prevPage) => Math.max(prevPage - 1, 0)); // Decrement the page number but not below 0
     console.log('current page:', pagenumber - 1);
-  }
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -97,7 +104,7 @@ const EventsPage = () => {
                 <a href={event.url} target="_blank" rel="noopener noreferrer" style={{ color: "darkblue" }}>
                   View Event
                 </a>
-                <Dropdown options={options} onSelect={handleSelect} />
+                <Dropdown options={options} onSelect={handleSelect} event={event} />
               </li>
             ))}
           </ul>

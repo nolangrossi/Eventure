@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import '../styles/dropdown.css';
 
-function Dropdown({ options, onSelect }) {
+function Dropdown({ options, onSelect, event }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
   const dropdownRef = useRef(null);
@@ -12,7 +12,7 @@ function Dropdown({ options, onSelect }) {
 
   const handleOptionClick = (option) => {
     setSelectedValue(option);
-    onSelect(option);
+    onSelect(option, event); // Pass the event to the onSelect callback
     setIsOpen(false);
   };
 
@@ -37,7 +37,7 @@ function Dropdown({ options, onSelect }) {
       {isOpen && (
         <ul className="dropdown-list">
           {options.map((option) => (
-            <li key={option} style={{listStyleType:'none'}} className="dropdown-item" onClick={() => handleOptionClick(option)}>
+            <li key={option} style={{ listStyleType: 'none' }} className="dropdown-item" onClick={() => handleOptionClick(option)}>
               {option}
             </li>
           ))}
