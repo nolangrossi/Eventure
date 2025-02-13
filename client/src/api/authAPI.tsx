@@ -1,3 +1,47 @@
+import { UserLogin } from "../interfaces/UserLogin";  // Import the UserLogin interface for typing userInfo
+
+// Function to send a POST request to the '/auth/login' endpoint with user login information
+const login = async (userInfo: UserLogin) => {
+  // Ensure username and password are not null
+  if (!userInfo.username || !userInfo.password) {
+    throw new Error('Username and password must be provided');
+  }
+
+  try {
+    const response = await fetch('auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userInfo),
+    });
+    console.log(response.body);
+    // Log the response for debugging
+    console.log('Raw response:', response);
+
+    if (!response.ok) {
+      // Try to parse the error response as JSON; if it fails, return the status text
+      const errorData = await response.json(); // Only read the response once
+      const errorMessage = errorData?.message || 'Unknown error';
+      console.error('Error response:', errorMessage); // Log the error message
+      throw new Error(`Error: ${errorMessage}`);
+    }
+
+    // If the response is successful, parse and return the JSON data
+    const data = await response.json(); // This is safe because we've already read the response in the previous step
+    return data;
+
+  } catch (err) {
+    console.log('Error from user login: ', err);
+    return Promise.reject('Could not fetch user info');
+  }
+};
+
+export { login };  // Export the login function to be used elsewhere in the application
+
+
+
+
 export const registerUser = async (userData: any) => {
   try {
     const response = await fetch("/api/auth/register", {
@@ -16,123 +60,3 @@ export const registerUser = async (userData: any) => {
   }
 };
 
-
-
-
-
-// import { ApiMessage } from "../interfaces/ApiMessage";
-// import { VolunteerData } from "../interfaces/VolunteerData";
-
-// const retrieveVolunteers = async () => {
-//   try {
-//     const response = await fetch('/api/volunteers', {
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     });
-//     const data = await response.json();
-
-//     if(!response.ok) {
-//       throw new Error('invalid volunteer API response, check network tab!');
-//     }
-
-//     return data;
-//   } catch (err) {
-//     console.log('Error from data retrieval:', err);
-//     return [];
-//   }  
-// };
-
-// const retrieveVolunteer = async (id: number | null): Promise<VolunteerData> => {
-//   try {
-//     const response = await fetch(`/api/volunteers/${id}`, {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       }
-//     });
-//     const data = await response.json();
-//     if(!response.ok) {
-//       throw new Error('invalid volunteer API response, check network tab!');
-//     }
-
-//     return data;
-//   } catch (err) {
-//     console.log('Error from data retrieval:', err);
-//     return Promise.reject('Could not fetch volunteer');
-//   }
-// };
-
-// const createVolunteer = async (body: VolunteerData): Promise<VolunteerData> => {
-//   try {
-//     const response = await fetch(
-//       '/api/volunteers/', {
-//         method: 'POST',
-//           headers: {
-//             'Content-Type': 'application/json',
-//           },
-//         body: JSON.stringify(body)
-//       }
-
-//     )
-//     const data = response.json();
-
-//     if(!response.ok) {
-//       throw new Error('invalid API response, check network tab!');
-//     }
-
-//     return data;
-
-//   } catch (err) {
-//     console.log('Error from Volunteer Creation: ', err);
-//     return Promise.reject('Could not create Volunteer');
-//   }
-// };
-
-// const updateVolunteers = async (id: number, body: VolunteerData): Promise<VolunteerData> => {
-//   try {
-//     const response = await fetch(
-//       `/api/volunteers/${id}`, {
-//         method: 'PUT',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(body)
-//       }
-//     )
-//     const data = await response.json();
-
-//     if(!response.ok) {
-//       throw new Error('invalid API response, check network tab!');
-//     }
-
-//     return data;
-//   } catch (err) {
-//     console.error('Update did not work', err);
-//     return Promise.reject('Update did not work');
-//   }
-// };
-
-// const deleteVolunteer = async (id: number): Promise<ApiMessage> => {
-//   try {
-//     const response = await fetch(
-//       `/api/volunteers/${id}`, {
-//         method: 'DELETE',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         }
-//       }
-//     )
-//     const data = await response.json();
-
-//     if(!response.ok) {
-//       throw new Error('invalid API response, check network tab!');
-//     }
-
-//     return data;
-//   } catch (err) {
-//     console.error('Error in deleting volunteer', err);
-//     return Promise.reject('Could not delete volunteer');
-//   }
-// };
-
-// export { retrieveVolunteer, retrieveVolunteers, createVolunteer, updateVolunteers, deleteVolunteer };

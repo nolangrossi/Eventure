@@ -25,7 +25,8 @@ const PORT = process.env.PORT || 3001;
 app.use(express.static('../client/dist'));
 
 
-app.use("/api",router);  // Attach all routes correctly
+app.use("/api",router);  // React server has its own ports and app has its own port
+
 app.get('*', (_req, res) => {
   res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
