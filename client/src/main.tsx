@@ -7,6 +7,7 @@ import './index.css'
 // import VolunteerForm from './pages/VolunteerForm.tsx';
 // import EditVolunteer from './pages/EditVolunteer.tsx';
 // import EditWork from './pages/EditWork.tsx';
+import RSVPPage from './pages/RSVPPage.tsx';
 import LoginPage from './pages/LoginPage.tsx';
 import SignUPpage from './pages/SignUPpage.tsx';
 import EventsPage from './pages/EventPage.tsx';
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />
+      }, 
+      {
+        path: "/RSVP",
+        element: <RSVPPage />
       }, 
       {
         path: '/signup',
