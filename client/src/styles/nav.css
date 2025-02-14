@@ -24,6 +24,7 @@ body {
     display: flex;
     align-items: center;
     height: 100%;
+    color: white;
     margin-top: 2em;
   }
   nav ul {

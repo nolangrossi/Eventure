@@ -3,33 +3,38 @@ import Dropdown from "../component/dropdown";
 import "../styles/events.css";
 
 const EventsPage = () => {
-  console.log("EventsPage component");
+  // State variables to manage events, search term, location, loading state, and page number
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [location, setLocation] = useState("");
   const [loading, setLoading] = useState(false);
   const options = ['Yes', 'No', 'Maybe'];
-  const [pagenumber, setPagenumber] = useState(0); // Use state for pagenumber
+  const [pagenumber, setPagenumber] = useState(0);
 
+  // Function to fetch events from the API
   const fetchEvents = async () => {
     console.log("fetching events");
     setLoading(true);
     
     try {
+      // Construct query parameters
       const queryParams = new URLSearchParams();
       if (searchTerm) queryParams.append("keyword", searchTerm);
       if (location) queryParams.append("city", location);
       queryParams.append('page', pagenumber.toString()); 
       console.log("Query Params:", queryParams.toString());
       
+      // Construct the API URL
       const url = `api/search/ticketmaster?${queryParams.toString()}`;
-      console.log("Fetching URL:", url); // Debugging output
+      console.log("Fetching URL:", url);
       
+      // Fetch data from the API
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
+      // Parse the JSON response
       const data = await response.json();
       console.log("Fetched data:", data);
       setEvents(data._embedded?.events || []);
@@ -39,30 +44,36 @@ const EventsPage = () => {
     setLoading(false);
   };
 
+  // Function to handle selection from the dropdown
   const onSelection = (selectedOption, event) => {
     console.log('Selected option:', selectedOption);
     console.log('Event:', event);
   };
 
+  // Function to handle selection from the dropdown and pass the event
   const handleSelect = (option, event) => {
     console.log('Selected option:', option);
     onSelection(option, event);
   };
 
+  // useEffect hook to fetch events on initial load and when pagenumber changes
   useEffect(() => {
     fetchEvents(); // Fetch events on initial load
   }, [pagenumber]); // Add pagenumber as a dependency to refetch on page change
 
+  // Function to increment the page number
   const incrementPage = () => {
     setPagenumber(pagenumber + 1); // Increment the page number
     console.log('current page:', pagenumber + 1);
   };
 
+  // Function to decrement the page number but not below 0
   const decrementPage = () => {
     setPagenumber((prevPage) => Math.max(prevPage - 1, 0)); // Decrement the page number but not below 0
     console.log('current page:', pagenumber - 1);
   };
 
+  // Function to handle search form submission
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Search submitted:", searchTerm, location);
