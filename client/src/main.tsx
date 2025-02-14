@@ -12,6 +12,8 @@ import LoginPage from './pages/LoginPage.tsx';
 import SignUPpage from './pages/SignUPpage.tsx';
 import EventsPage from './pages/EventPage.tsx';
 import App from './App.tsx';
+import HomePage from './pages/HomePage.tsx';
+
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
         path : '/events',
         element: <EventsPage />
 
+      },
+      {
+        path: '/home',
+        element: <HomePage />
       }
     ]
   },

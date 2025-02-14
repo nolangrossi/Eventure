@@ -5,7 +5,7 @@ function App() {
     <div>
       <Navbar />
       <Outlet /> {/* This is where child pages (Login, Dashboard, etc.) will be displayed */}
-      <Navigate to= "/events" />
+      <Navigate to= "/home" />
     </div>
   );
 }

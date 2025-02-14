@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import "../styles/home.css"; 
 
 const backgroundImages = [
-  "/src/assets/homepage-stage-background.jpg",
-  "/src/assets/homepage-render1.jpg",
-  "/src/assets/homepage-render2.jpg",
-  "/src/assets/homepage-render3.jpg",
-  "/src/assets/homepage-render4.jpg",
+  "../assets/homepage-stage-background.jpg",
+  "../assets/homepage-render1.jpg",
+  "../assets/homepage-render2.jpg",
+  "../assets/homepage-render3.jpg",
+  "../assets/homepage-render4.jpg",
+  
 
 ];
 
