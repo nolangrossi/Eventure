@@ -34,34 +34,26 @@
   ![Eventure-App](./client/src/assets/homepage-render.jpg)
   
   ## Contributing
-  The source of contributors I have used in this application:
+  These are all the contributors that contributed to creating this application:
   * [nolangrossi](https://github.com/nolangrossi/)
   * [jutalexa2024](https://github.com/jutalexa2024)
   * [Jesuscatalan](https://github.com/Jesuscatalan)
   * [jbarry89](https://github.com/jbarry89/)
   
   ## Test 
-  Navigate to the filepath of where the code is saved. Before running the program, you must copy and paste the `.env.EXAMPLE` file with the code `DB_NAME='kanban_db'`,  `DB_USER=`, `DB_PASSWORD=`, and `JWT_SECRET_KEY=`. Then rename the file as`.env` in the server folder. Copy and paste the `.env.EXAMPLE` file in the client folder and rename the file as`.env`. In the `.env` content that's in the client folder, type the localhost URL `VITE_API_URL=`.
+  Navigate to the filepath of where the code is saved. Before running the program, you must copy and paste the `.env.EXAMPLE` file with the code `DB_NAME='eventure_db'`,  `DB_USER=`, `DB_PASSWORD=`, and `JWT_SECRET_KEY=`. Then rename the file as`.env` in the server folder. Copy and paste the `.env.EXAMPLE` file in the client folder and rename the file as`.env`. In the `.env` content that's in the client folder, type the localhost URL `VITE_API_URL=`.
   
-  Type the code below in the terminal, running each line of code separately.
+  **Run the Application:**
+  
+  *Type the code below in the terminal, running each line of code separately. Be sure to install all required dependencies. See **installation** section above.*
 
   ```bash
   npm install
 
   ```
 
-  **Run the Application:**
-
   ``` bash 
-  cd server
-  npm run dev
-
-  ``` 
-  Open a new Terminal and navigate to project folder:
-
-  ``` bash
-  cd client 
-  npm run dev
+  npm run start
 
   ``` 
 
