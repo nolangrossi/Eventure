@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../styles/rsvp.css";
+import "../styles/RSVP.css";
 
 const userId = 1; // Replace this with the actual logged-in user's ID
 
