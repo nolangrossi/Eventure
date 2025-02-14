@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-
-    "build": "npx nodemon",
+    "build": "npx tsc",
     "start": "npm run build && node ./dist/server.js --ignore client",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js" 
   },
   "nodemonConfig": {
     "watch": [
