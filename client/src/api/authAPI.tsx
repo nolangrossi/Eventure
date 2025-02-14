@@ -8,7 +8,7 @@ const login = async (userInfo: UserLogin) => {
   }
 
   try {
-    const response = await fetch('auth/login', {
+    const response = await fetch('api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ const login = async (userInfo: UserLogin) => {
       body: JSON.stringify(userInfo),
     });
     console.log(response.body);
-    // Log the response for debugging
+    // Log the response for debuggingv
     console.log('Raw response:', response);
 
     if (!response.ok) {

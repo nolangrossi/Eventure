@@ -28,7 +28,7 @@ const LoginPage = () => {
       const data = await login(loginData);
       console.log(data); // Log the raw response
       Auth.login(data.token);
-      navigate('/dashboard');  // Redirect to dashboard on success
+      navigate('/events');  // Redirect to dashboard on success
     } catch (err) {
       setError("Failed to login. Please check your credentials.");
       console.error('Failed to login', err);
